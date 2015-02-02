@@ -1,6 +1,7 @@
 module Main where
 
-import Data.MUN
+import Data.OPUS.MultiUN
+import Data.OPUS
 
 import Data.List (groupBy, sort, sortBy)
 import Control.Applicative ((<$>))
