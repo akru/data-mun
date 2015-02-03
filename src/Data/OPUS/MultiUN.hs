@@ -63,5 +63,5 @@ loadXmlFiles langDirs = do
 
     convert acc pc
         | any null pc = acc
-        | otherwise = convert (zip langs (head pc) : acc) (tail pc)
+        | otherwise = convert (zip langs (map head pc) : acc) (map tail pc)
 
