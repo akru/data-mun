@@ -1,14 +1,15 @@
-module Data.OPUS.Tmx where
+module Data.OPUS.Tmx (parseTmx) where
 
 import Data.OPUS.Types
 import Data.OPUS.Loader
 
-import Control.Monad (liftM)
 import Text.XML.HXT.Core
 
-parseTmx :: String -> IO Corpus
-parseTmx fileName = liftM mkCorpus . runX $
-    readDocument [withValidate no] fileName >>> tmxParser
+-- | TMX format (translation memory) parser
+--   Input is a .tmx file path.
+parseTmx :: FilePath -> IO Corpus
+parseTmx filePath = fmap mkCorpus . runX $
+    readDocument [withValidate no] filePath >>> tmxParser
 
 tmxParser :: ArrowXml a => a XmlTree [(Lang, String)]
 tmxParser = getChildren >>>

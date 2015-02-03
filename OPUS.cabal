@@ -1,5 +1,5 @@
 name:                OPUS
-version:             0.3.1
+version:             0.4.0
 synopsis:            OPUS corpus bindings and exporter
 license:             MIT
 license-file:        LICENSE
@@ -15,29 +15,20 @@ executable MultiUNExtract
                      , filepath    >=1.3  && <1.4
                      , directory   >=1.2  && <1.3
                      , containers  >=0.5  && <0.6
-                     , tagsoup     >=0.13 && <0.14
-                     , zlib        >=0.5  && <0.6
                      , regex-posix >=0.95 && <0.96
-                     , utf8-string >=0.3  && <0.4
-                     , bytestring  >=0.10 && <0.11
-                     , binary      >=0.7  && <0.8
-  hs-source-dirs:      src
+                     , OPUS
+  hs-source-dirs:      src/bin
   default-language:    Haskell2010
 
 library
   exposed-modules:     Data.OPUS
+                     , Data.OPUS.Raw
                      , Data.OPUS.Tmx
                      , Data.OPUS.Types
                      , Data.OPUS.Loader
-                     , Data.OPUS.MultiUN
   build-depends:       base        >=4.7  && <4.8
-                     , filepath    >=1.3  && <1.4
-                     , directory   >=1.2  && <1.3
                      , containers  >=0.5  && <0.6
-                     , tagsoup     >=0.13 && <0.14
                      , zlib        >=0.5  && <0.6
-                     , regex-posix >=0.95 && <0.96
-                     , utf8-string >=0.3  && <0.4
                      , bytestring  >=0.10 && <0.11
                      , binary      >=0.7  && <0.8
                      , hxt         >=9.0  && <10.0
