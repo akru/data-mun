@@ -14,7 +14,7 @@ import System.Directory
 extract :: FilePath -> [(Lang, FilePath)] -> IO ()
 extract fileName input = do
     c <- loadXmlFiles input
-    save c (fileName ++ ".pc.gz")
+    save (fileName ++ ".pc.gz") c
 
 parallelYears :: [[String]] -> [String]
 parallelYears =

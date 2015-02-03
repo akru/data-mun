@@ -1,8 +1,9 @@
 module Data.OPUS.Types where
 
-import Data.Map
+import Data.Set (Set)
+import Data.Map (Map)
+import Data.Binary
 
-type Lang      = String
-type Corpus    = Map Int String
-type ParCorpus = Map Lang Corpus
-
+type Lang         = String
+type Corpus       = Set ParallelText
+type ParallelText = Map Lang String

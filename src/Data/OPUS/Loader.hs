@@ -1,35 +1,26 @@
 module Data.OPUS.Loader
   ( load
   , save
-  , unionParCorpus
-  , mkParCorpus
+  , mkCorpus
   ) where
 
 import Data.OPUS.Types
 
 import qualified Data.ByteString.Lazy as LBS
+import Data.Binary (Binary, encode, decode)
 import Codec.Compression.GZip
-import Data.Serialize
-import Data.Map hiding (map, foldl)
+import Data.Map as M hiding (map)
+import Data.Set as S hiding (map)
 
-unionParCorpus :: ParCorpus -> ParCorpus -> ParCorpus
-unionParCorpus = unionWith uni
-  where
-    a `uni` b = a `union` mapKeys (+ size a) b
+mkCorpus :: [[(Lang, String)]] -> Corpus
+mkCorpus = S.fromList . map M.fromList
 
-mkParCorpus :: [[(Lang, String)]] -> ParCorpus
-mkParCorpus = foldl unionParCorpus empty 
-            . map (foldl unionParCorpus empty . map mkSimple)
-  where
-    mkSimple (l, s) = singleton l (singleton 0 s)
-
-save :: Serialize a => a -> FilePath -> IO ()
-save a name = LBS.writeFile name content
-  where
-    content = compress (encodeLazy a)
+save :: Binary a => FilePath -> a -> IO ()
+save name =
+    LBS.writeFile name . compress . encode
     
-load :: Serialize a => FilePath -> IO (Either String a)
+load :: Binary a => FilePath -> IO a
 load name = do
     content <- LBS.readFile name
-    return $ decodeLazy (decompress content)
+    return $ decode (decompress content)
 

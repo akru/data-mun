@@ -1,5 +1,5 @@
 name:                OPUS
-version:             0.2.0.0
+version:             0.3
 synopsis:            OPUS corpus bindings and exporter
 license:             MIT
 license-file:        LICENSE
@@ -20,7 +20,7 @@ executable MultiUNExtract
                      , regex-posix >=0.95 && <0.96
                      , utf8-string >=0.3  && <0.4
                      , bytestring  >=0.10 && <0.11
-                     , cereal      >=0.4  && <0.5
+                     , binary      >=0.7  && <0.8
   hs-source-dirs:      src
   default-language:    Haskell2010
 
@@ -39,7 +39,7 @@ library
                      , regex-posix >=0.95 && <0.96
                      , utf8-string >=0.3  && <0.4
                      , bytestring  >=0.10 && <0.11
-                     , cereal      >=0.4  && <0.5
+                     , binary      >=0.7  && <0.8
                      , hxt         >=9.0  && <10.0
   hs-source-dirs:      src
   default-language:    Haskell2010

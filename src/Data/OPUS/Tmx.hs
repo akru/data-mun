@@ -6,8 +6,8 @@ import Data.OPUS.Loader
 import Control.Monad (liftM)
 import Text.XML.HXT.Core
 
-parseTmx :: String -> IO ParCorpus
-parseTmx fileName = liftM mkParCorpus . runX $
+parseTmx :: String -> IO Corpus
+parseTmx fileName = liftM mkCorpus . runX $
     readDocument [withValidate no] fileName >>> tmxParser
 
 tmxParser :: ArrowXml a => a XmlTree [(Lang, String)]
