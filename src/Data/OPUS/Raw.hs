@@ -3,7 +3,9 @@ module Data.OPUS.Raw (parseRaw) where
 import Data.OPUS.Types
 import Data.OPUS.Loader
 
+import Data.Text (Text, pack)
 import Data.List (transpose)
+import Text.XML.HXT.Expat
 import Text.XML.HXT.Core
 
 -- | Raw OPUS format parser
@@ -17,13 +19,14 @@ parseRaw langFiles =
     langs = map fst langFiles
     rawConverter = map (zip langs) . transpose
     runParser f  = runX $
-        readDocument [withValidate no] f >>> rawParser
+        readDocument [ withValidate no
+                     , withExpat yes
+                     ] f >>> rawParser
     consistentCheck c
         | all ((== length (head c)) . length) c = c
         | otherwise = error "unaligned source"
 
-
-rawParser :: ArrowXml a => a XmlTree String
+rawParser :: ArrowXml a => a XmlTree Text
 rawParser = getChildren >>>
-    hasName "DOC" //> hasName "s" >>> getChildren >>> getText
+    hasName "DOC" //> hasName "s" >>> getChildren >>> getText >>^ pack
 
