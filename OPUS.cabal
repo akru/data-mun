@@ -1,5 +1,5 @@
 name:                OPUS
-version:             0.5.1
+version:             0.5.2
 synopsis:            OPUS corpus bindings and exporter
 license:             MIT
 license-file:        LICENSE
