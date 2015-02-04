@@ -1,7 +1,7 @@
 module Data.OPUS.Raw (parseRaw) where
 
+import Data.OPUS.Util (mkCorpus)
 import Data.OPUS.Types
-import Data.OPUS.Loader
 
 import Data.Text (Text, pack)
 import Data.List (transpose)
