@@ -1,11 +1,11 @@
 name:                OPUS
-version:             0.6.0
+version:             0.7.0
 synopsis:            OPUS corpus bindings and exporter
 license:             MIT
 license-file:        LICENSE
 author:              Alexander Krupenkin
 maintainer:          mail@akru.me
-category:            Data
+category:            NLP
 build-type:          Simple
 cabal-version:       >=1.10
 
@@ -27,13 +27,20 @@ executable TMXExtract
   hs-source-dirs:      src/bin
   default-language:    Haskell2010
 
+executable UnionByLang
+  main-is:             UnionByLang.hs
+  build-depends:       base        >=4.6  && <4.8
+                     , OPUS
+  hs-source-dirs:      src/bin
+  default-language:    Haskell2010
+
 library
-  exposed-modules:     Data.OPUS
-                     , Data.OPUS.Raw
-                     , Data.OPUS.Tmx
-                     , Data.OPUS.Util
-                     , Data.OPUS.Types
-                     , Data.OPUS.Loader
+  exposed-modules:     NLP.OPUS
+                     , NLP.OPUS.Raw
+                     , NLP.OPUS.Tmx
+                     , NLP.OPUS.Util
+                     , NLP.OPUS.Types
+                     , NLP.OPUS.Loader
   build-depends:       base          >=4.6  && <4.8
                      , containers    >=0.5  && <0.6
                      , zlib          >=0.5  && <0.6

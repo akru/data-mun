@@ -1,4 +1,4 @@
-module Data.OPUS.Types where
+module NLP.OPUS.Types where
 
 import Data.Set (Set)
 import Data.Map (Map)

@@ -1,6 +1,6 @@
-module Data.OPUS.Loader where
+module NLP.OPUS.Loader where
 
-import Data.OPUS.Types
+import NLP.OPUS.Types
 
 import Codec.Compression.GZip (compress, decompress)
 import qualified Data.ByteString.Lazy as BSL

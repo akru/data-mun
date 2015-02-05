@@ -1,7 +1,7 @@
 module Main where
 
-import Data.OPUS.Raw
-import Data.OPUS
+import NLP.OPUS.Raw
+import NLP.OPUS
 
 import Data.List (groupBy, sort, sortBy)
 import Control.Applicative ((<$>))

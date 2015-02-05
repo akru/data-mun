@@ -1,6 +1,6 @@
-module Data.OPUS.Tmx (parseTmx) where
+module NLP.OPUS.Tmx (parseTmx) where
 
-import Data.OPUS.Types
+import NLP.OPUS.Types
 
 import Text.XML.HXT.Core
 import Text.XML.HXT.Expat

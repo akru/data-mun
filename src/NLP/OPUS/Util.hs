@@ -1,6 +1,6 @@
-module Data.OPUS.Util where
+module NLP.OPUS.Util where
 
-import Data.OPUS.Types
+import NLP.OPUS.Types
 
 import qualified Data.Set as S
 import qualified Data.Map as M
@@ -17,9 +17,9 @@ mkCorpus = S.fromList . map M.fromList
 unionByLang :: Lang -> Corpus -> Corpus -> Corpus
 unionByLang l a b = S.fromList corpusAB
   where
-    corpusAB = [ M.union x y | x <- S.elems a
-                             , y <- S.elems b
-                             , x ! l == y ! l ]
+    corpusAB  = M.elems (mapByLang a `union` mapByLang b)
+    mapByLang = M.mapKeys (! l) . M.fromSet id
+    union     = M.unionWith M.union
 
 -- | Parallel texts pretty printer
 parallelView :: ParallelText -> IO ()

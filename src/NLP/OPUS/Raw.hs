@@ -1,7 +1,7 @@
-module Data.OPUS.Raw (parseRaw) where
+module NLP.OPUS.Raw (parseRaw) where
 
-import Data.OPUS.Util (mkCorpus)
-import Data.OPUS.Types
+import NLP.OPUS.Util (mkCorpus)
+import NLP.OPUS.Types
 
 import Data.Text (Text, pack)
 import Data.List (transpose)

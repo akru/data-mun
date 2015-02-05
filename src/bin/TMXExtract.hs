@@ -1,9 +1,10 @@
 module Main where
 
 import System.Environment
-import Data.OPUS.Tmx
-import Data.OPUS
+import NLP.OPUS.Tmx
+import NLP.OPUS
 
+main :: IO ()
 main = do
     name <- fmap head getArgs
     c <- parseTmx name
